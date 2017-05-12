@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
                     myText.append("\nByte block 10 as string:"+new String(buffer));
                     nfcv.close();
                 } else
+
                     myText.append("Not connected to the tag");
             } catch (IOException e) { myText.append("Error");
             } }
