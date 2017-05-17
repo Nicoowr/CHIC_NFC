@@ -52,8 +52,8 @@ public class NFC_Activity extends Activity{
 
     @Override
     public void onNewIntent(Intent intent) {
-        if (NfcAdapter.ACTION_TECH_DISCOVERED.equals(getIntent().getAction())) {
-            Tag detectedTag = getIntent().getParcelableExtra(NfcAdapter.EXTRA_TAG);
+        //if (NfcAdapter.ACTION_TECH_DISCOVERED.equals(getIntent().getAction())) {
+            Tag detectedTag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
             NfcV nfcv = NfcV.get(detectedTag);
             try {
                 nfcv.connect();
@@ -85,7 +85,7 @@ public class NFC_Activity extends Activity{
             } catch (IOException e) {
                 myText.append("Error");
             }
-        }
+        //}
     }
 
     @Override
