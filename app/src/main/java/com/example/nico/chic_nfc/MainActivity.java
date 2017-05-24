@@ -31,5 +31,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button goToRead = (Button) findViewById(R.id.NFCRead);
+        goToRead.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View view) {
+                Intent myIntent = new Intent( view.getContext(), NFC_Read.class);
+                startActivityForResult(myIntent, 0);
+            }
+        });
+
+        Button goToReset = (Button) findViewById(R.id.NFCReset);
+        goToReset.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View view) {
+                Intent myIntent = new Intent( view.getContext(), Reset_Activity.class);
+                startActivityForResult(myIntent, 0);
+            }
+        });
+
     }
 }

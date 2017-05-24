@@ -27,9 +27,23 @@
 
         <Button
             android:id="@+id/NFCActivity"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Send and Receive" />
+            android:text="Send" />
+
+        <Button
+            android:id="@+id/NFCReset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Reset" />
+
+        <Button
+            android:id="@+id/NFCRead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Read" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

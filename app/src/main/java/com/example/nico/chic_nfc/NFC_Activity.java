@@ -59,14 +59,27 @@ public class NFC_Activity extends Activity{
                 nfcv.connect();
                 if (nfcv.isConnected()) {
                     myText.append("Connected to the tag");
-                    myText.append("\nTag DSF: " + Byte.toString(nfcv.getDsfId()));
+                    //myText.append("\nTag DSF: " + Byte.toString(nfcv.getDsfId()));
+                    myText.append("\nTag DSF: " + String.format("%02X ", nfcv.getDsfId()));
                     byte[] buffer;
-                    /*buffer=nfcv.transceive(new byte[] {0x00, 0x20, (byte) 0});
-                    myText.append("\nByte block 10:"+buffer);
-                    myText.append("\nByte block 10 as string:"+new String(buffer));*/
 
 
-                    nfcv.transceive(new byte[]{0x00, 0x21, (byte) 0, 0x01, 0x00, 0x10, 0x03, 0x02, 0x01, 0x01, 0x00});
+                    //Start pressure sampling every 5 secs
+                    byte command[] = new byte[]{
+                            0x00,
+                            0x21,
+                            (byte) 0,
+                            0x01, //General control register
+                            0x00, //Firmware Status register
+                            0x10, //Sensor control register
+                            0x03, //Frequency control register
+                            0x02, //Number of passes register
+                            0x01, //Averaging register
+                            0x01, //Interrupt control register: infinite sampling
+                            0x00 //Error control register
+                    };
+
+                    nfcv.transceive(command);
 
                     buffer = nfcv.transceive(new byte[]{0x00, 0x20, (byte) 9});
 
